@@ -1,0 +1,231 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    id: 'general-dentistry',
+    name: 'General Dentistry',
+    description: 'Comprehensive dental care including cleanings, exams, fillings, and preventive treatments to maintain your oral health.',
+    icon: 'tooth',
+    link: '/services/general-dentistry'
+  },
+  {
+    id: 'cosmetic-dentistry',
+    name: 'Cosmetic Dentistry',
+    description: 'Transform your smile with veneers, bonding, and smile makeovers designed to enhance your natural beauty.',
+    icon: 'sparkle',
+    link: '/services/cosmetic-dentistry'
+  },
+  {
+    id: 'pediatric-dentistry',
+    name: 'Pediatric Dentistry',
+    description: 'Gentle, child-friendly dental care in a welcoming environment that makes visits fun for your little ones.',
+    icon: 'child',
+    link: '/services/pediatric-dentistry'
+  },
+  {
+    id: 'orthodontics',
+    name: 'Orthodontics',
+    description: 'Straighten your teeth with modern braces and clear aligner options for patients of all ages.',
+    icon: 'braces',
+    link: '/services/orthodontics'
+  },
+  {
+    id: 'emergency-care',
+    name: 'Emergency Dental Care',
+    description: 'Same-day appointments for dental emergencies including toothaches, broken teeth, and urgent dental needs.',
+    icon: 'emergency',
+    link: '/services/emergency-care'
+  },
+  {
+    id: 'teeth-whitening',
+    name: 'Teeth Whitening',
+    description: 'Professional whitening treatments that deliver dramatic results safely and effectively.',
+    icon: 'whitening',
+    link: '/services/teeth-whitening'
+  }
+];
+---
+
+<Layout
+  title="Our Dental Services | Franconia Family Dental"
+  description="Explore the full range of dental services at Franconia Family Dental — from general and pediatric dentistry to cosmetic treatments and emergency care."
+>
+  <!-- Hero Section -->
+  <section
+    class="bg-gradient-to-b from-sky-50 to-white py-16 md:py-24"
+    aria-labelledby="hero-heading"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h1
+          id="hero-heading"
+          class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl"
+        >
+          Our Dental Services
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-600">
+          At Franconia Family Dental, we offer a comprehensive range of dental services
+          to meet the needs of your entire family. From routine cleanings to advanced
+          cosmetic procedures, our experienced team is dedicated to providing exceptional
+          care in a comfortable, welcoming environment.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid Section -->
+  <section
+    class="bg-white py-16 md:py-24"
+    aria-labelledby="services-heading"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2
+        id="services-heading"
+        class="sr-only"
+      >
+        Available Services
+      </h2>
+
+      <ul
+        role="list"
+        class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+      >
+        {services.map((service) => (
+          <li>
+            <article
+              class="group relative flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:border-sky-200 hover:shadow-lg focus-within:ring-2 focus-within:ring-sky-500 focus-within:ring-offset-2"
+              aria-labelledby={`${service.id}-heading`}
+            >
+              <!-- Icon -->
+              <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-sky-100 text-sky-600 transition-colors group-hover:bg-sky-600 group-hover:text-white">
+                {service.icon === 'tooth' && (
+                  <svg aria-hidden="true" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 2C9.5 2 7 3.5 7 6c0 2 1 3 1 5s-1 5 0 8c.5 1.5 1.5 2 2.5 2s1.5-1 2.5-1 1.5 1 2.5 1 2-.5 2.5-2c1-3-1-6 0-8s1-3 1-5c0-2.5-2.5-4-5-4z" />
+                  </svg>
+                )}
+                {service.icon === 'sparkle' && (
+                  <svg aria-hidden="true" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
+                  </svg>
+                )}
+                {service.icon === 'child' && (
+                  <svg aria-hidden="true" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+                  </svg>
+                )}
+                {service.icon === 'braces' && (
+                  <svg aria-hidden="true" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 12h16M4 12a2 2 0 01-2-2V6a2 2 0 012-2h16a2 2 0 012 2v4a2 2 0 01-2 2M4 12a2 2 0 00-2 2v4a2 2 0 002 2h16a2 2 0 002-2v-4a2 2 0 00-2-2m-8-4v8m-4-8v8m8-8v8" />
+                  </svg>
+                )}
+                {service.icon === 'emergency' && (
+                  <svg aria-hidden="true" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                  </svg>
+                )}
+                {service.icon === 'whitening' && (
+                  <svg aria-hidden="true" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                  </svg>
+                )}
+              </div>
+
+              <!-- Content -->
+              <h3
+                id={`${service.id}-heading`}
+                class="text-xl font-semibold text-slate-900"
+              >
+                {service.name}
+              </h3>
+              <p class="mt-3 flex-grow text-base leading-relaxed text-slate-600">
+                {service.description}
+              </p>
+
+              <!-- Learn More Link -->
+              <a
+                href={service.link}
+                class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-sky-600 transition-colors hover:text-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
+              >
+                Learn More
+                <svg aria-hidden="true" class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+                <span class="sr-only">about {service.name}</span>
+              </a>
+            </article>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section
+    class="bg-sky-600 py-16 md:py-20"
+    aria-labelledby="cta-heading"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2
+          id="cta-heading"
+          class="text-3xl font-bold tracking-tight text-white sm:text-4xl"
+        >
+          Ready to Schedule Your Visit?
+        </h2>
+        <p class="mt-4 text-lg leading-relaxed text-sky-100">
+          Our friendly team is here to help you achieve and maintain a healthy, beautiful smile.
+          Contact us today to book your appointment or learn more about our services.
+        </p>
+        <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a
+            href="/contact#book"
+            class="inline-flex items-center justify-center rounded-lg bg-white px-8 py-3.5 text-base font-semibold text-sky-600 shadow-sm transition-all hover:bg-sky-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-sky-600"
+          >
+            Book Appointment
+          </a>
+          <a
+            href="tel:+15551234567"
+            class="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/30 bg-transparent px-8 py-3.5 text-base font-semibold text-white transition-all hover:border-white hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-sky-600"
+          >
+            <svg aria-hidden="true" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+            Call (555) 123-4567
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Insurance Info Section -->
+  <section
+    class="bg-slate-50 py-16"
+    aria-labelledby="insurance-heading"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2
+          id="insurance-heading"
+          class="text-2xl font-bold text-slate-900 sm:text-3xl"
+        >
+          Insurance & Payment Options
+        </h2>
+        <p class="mt-4 text-base leading-relaxed text-slate-600">
+          We accept most major dental insurance plans and offer flexible payment options
+          to make quality dental care accessible for everyone. Contact our office to
+          verify your coverage or discuss financing options.
+        </p>
+        <a
+          href="/patient-info#insurance"
+          class="mt-6 inline-flex items-center gap-2 text-base font-semibold text-sky-600 transition-colors hover:text-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
+        >
+          View Accepted Insurance Plans
+          <svg aria-hidden="true" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,176 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = "Franconia Family Dental | Compassionate Family Dentistry",
+  description = "Franconia Family Dental provides comprehensive dental care for the whole family. Schedule your appointment today for a healthier smile.",
+  ogImage = "/images/og-default.jpg",
+} = Astro.props;
+
+const siteUrl = "https://pro1.jakefixestech.com";
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const ogImageUrl = ogImage.startsWith("http") ? ogImage : new URL(ogImage, siteUrl).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Character encoding and viewport -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Franconia Family Dental" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content="Franconia Family Dental - Compassionate Family Dentistry" />
+    <meta property="og:site_name" content="Franconia Family Dental" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content="Franconia Family Dental - Compassionate Family Dentistry" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0284c7" />
+    <meta name="msapplication-TileColor" content="#0284c7" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Google Analytics Placeholder -->
+    <!--
+      Replace GA_MEASUREMENT_ID with your actual Google Analytics 4 measurement ID.
+      Uncomment when ready to enable tracking.
+    -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    -->
+
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Dentist",
+        "name": "Franconia Family Dental",
+        "description": "Comprehensive family dental care serving the Franconia community with compassion and excellence.",
+        "url": "https://pro1.jakefixestech.com",
+        "telephone": "(555) 123-4567",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "123 Main Street, Suite 100",
+          "addressLocality": "Franconia",
+          "addressRegion": "NH",
+          "postalCode": "03580",
+          "addressCountry": "US"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "08:00",
+            "closes": "17:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "09:00",
+            "closes": "13:00"
+          }
+        ],
+        "priceRange": "$$",
+        "image": "https://pro1.jakefixestech.com/images/og-default.jpg"
+      }
+    </script>
+  </head>
+  <body class="flex min-h-screen flex-col bg-white font-sans text-slate-800 antialiased">
+    <!-- Skip to main content -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-sky-600 focus:px-4 focus:py-2 focus:text-white focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2"
+    >
+      Skip to main content
+    </a>
+
+    <Header />
+
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  @import "tailwindcss";
+
+  :root {
+    --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  :focus-visible {
+    outline: 2px solid #0284c7;
+    outline-offset: 2px;
+  }
+</style>
