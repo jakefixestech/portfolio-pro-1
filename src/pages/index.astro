@@ -8,41 +8,56 @@ import Layout from "../layouts/Layout.astro";
 >
   <!-- Hero Section -->
   <section class="relative overflow-hidden bg-gradient-to-b from-sky-50 to-white">
-    <div class="absolute inset-0 opacity-30 pointer-events-none" aria-hidden="true">
-  <div class="absolute -top-24 right-0 h-96 w-96 rounded-full bg-sky-200 blur-3xl transition-none">
-  </div>
-  <div class="absolute bottom-0 left-1/4 h-64 w-64 rounded-full bg-sky-100 blur-3xl transition-none">
-  </div>
-</div>
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <!-- Text Content -->
+        <div class="text-center lg:text-left">
+          <h1
+            class="text-balance text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl"
+          >
+            Your Family's Smile is
+            <span class="text-sky-600">Our Priority</span>
+          </h1>
+          <p class="mx-auto mt-6 max-w-2xl text-lg text-slate-600 leading-relaxed lg:mx-0">
+            At Franconia Family Dental, we provide gentle, comprehensive dental
+            care in a warm, welcoming environment. From routine checkups to
+            advanced treatments, we're here for every member of your family.
+          </p>
+          <div
+            class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start"
+          >
+            <a
+              href="/book-appointment"
+              class="inline-flex w-full items-center justify-center rounded-lg bg-sky-600 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-sky-500/25 transition-all hover:bg-sky-700 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 active:scale-[0.98] sm:w-auto"
+            >
+              Book Your Appointment
+            </a>
+            <a
+              href="/services"
+              class="inline-flex w-full items-center justify-center rounded-lg border-2 border-slate-200 bg-white px-8 py-4 text-base font-semibold text-slate-700 transition-all hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 sm:w-auto"
+            >
+              Explore Services
+            </a>
+          </div>
+        </div>
 
-    <div class="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-      <div class="mx-auto max-w-3xl text-center">
-        <h1
-          class="text-balance text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl"
-        >
-          Your Family's Smile is
-          <span class="text-sky-600">Our Priority</span>
-        </h1>
-        <p class="mx-auto mt-6 max-w-2xl text-lg text-slate-600 leading-relaxed">
-          At Franconia Family Dental, we provide gentle, comprehensive dental
-          care in a warm, welcoming environment. From routine checkups to
-          advanced treatments, we're here for every member of your family.
-        </p>
-        <div
-          class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
-        >
-          <a
-            href="/book-appointment"
-            class="inline-flex w-full items-center justify-center rounded-lg bg-sky-600 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-sky-500/25 transition-all hover:bg-sky-700 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 active:scale-[0.98] sm:w-auto"
-          >
-            Book Your Appointment
-          </a>
-          <a
-            href="/services"
-            class="inline-flex w-full items-center justify-center rounded-lg border-2 border-slate-200 bg-white px-8 py-4 text-base font-semibold text-slate-700 transition-all hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 sm:w-auto"
-          >
-            Explore Services
-          </a>
+        <!-- Hero Image -->
+        <div class="relative">
+          <div class="relative overflow-hidden rounded-2xl shadow-2xl">
+            <img
+              src="/hero.jpg"
+              alt="A friendly dentist consulting with a patient in a bright, modern dental office"
+              class="w-full h-auto object-cover aspect-[4/3]"
+              loading="eager"
+              width="800"
+              height="600"
+            />
+          </div>
+          <!-- Decorative accent -->
+          <div
+            class="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-2xl bg-sky-100"
+            aria-hidden="true"
+          ></div>
         </div>
       </div>
     </div>
