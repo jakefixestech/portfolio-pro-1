@@ -1,0 +1,143 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Teeth Whitening | Franconia Family Dental"
+  description="Professional teeth whitening at Franconia Family Dental. Safe, effective in-office and take-home whitening treatments for a brighter smile in Franconia, NH."
+>
+  <!-- Hero Section -->
+  <section
+    class="bg-gradient-to-b from-sky-50 to-white py-16 md:py-24"
+    aria-labelledby="hero-heading"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <a
+          href="/services"
+          class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 mb-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 rounded"
+        >
+          <svg aria-hidden="true" class="h-4 w-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+          All Services
+        </a>
+        <h1
+          id="hero-heading"
+          class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl"
+        >
+          Teeth Whitening
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-600">
+          A brighter smile can take years off your appearance and dramatically boost
+          your confidence. Our professional whitening treatments deliver safe, dramatic
+          results that over-the-counter products simply can't match.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section
+    class="bg-white py-16 md:py-20"
+    aria-labelledby="services-detail-heading"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-start">
+        <div>
+          <h2 id="services-detail-heading" class="text-2xl font-bold text-slate-900 sm:text-3xl">
+            Our Whitening Options
+          </h2>
+          <p class="mt-4 text-slate-600 leading-relaxed">
+            We offer two professional whitening options to fit your lifestyle and timeline.
+            Both use professional-strength whitening agents that are far more effective
+            than anything available over the counter.
+          </p>
+
+          <ul class="mt-8 space-y-4" role="list">
+            {[
+              { title: "In-Office Whitening", desc: "Our most powerful option — achieve a smile up to 8 shades brighter in a single one-hour appointment." },
+              { title: "Take-Home Whitening Kits", desc: "Custom-fitted trays and professional-strength gel you can use at home on your own schedule." },
+              { title: "Combination Treatment", desc: "Start with an in-office treatment and maintain results with a take-home kit." },
+              { title: "Sensitivity Management", desc: "We use desensitizing agents to minimize discomfort during and after treatment." },
+              { title: "Touch-Up Treatments", desc: "Periodic touch-ups to maintain your bright smile over time." },
+            ].map((item) => (
+              <li class="flex items-start gap-4">
+                <div class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-sky-100">
+                  <svg aria-hidden="true" class="h-4 w-4 text-sky-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <strong class="text-slate-900">{item.title}</strong>
+                  <p class="mt-1 text-sm text-slate-600">{item.desc}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="space-y-6">
+          <div class="rounded-2xl bg-sky-50 p-8">
+            <h3 class="text-lg font-bold text-slate-900">Why Professional Whitening?</h3>
+            <ul class="mt-3 space-y-3 text-slate-600 text-sm">
+              {[
+                "Up to 8x more effective than store-bought strips",
+                "Custom trays ensure even, consistent results",
+                "Supervised by dental professionals for your safety",
+                "Faster results — see a difference in one visit",
+                "Longer-lasting results with proper maintenance",
+              ].map((point) => (
+                <li class="flex items-start gap-3">
+                  <svg aria-hidden="true" class="h-5 w-5 text-sky-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="rounded-2xl bg-slate-50 p-8">
+            <h3 class="text-lg font-bold text-slate-900">Good Candidates for Whitening</h3>
+            <p class="mt-3 text-slate-600 text-sm leading-relaxed">
+              Whitening works best on natural teeth with yellowing or staining from
+              coffee, tea, wine, or tobacco. It's less effective on gray staining,
+              crowns, veneers, or fillings. We'll evaluate your smile during a
+              consultation to ensure whitening is right for you.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-sky-600 py-16" aria-labelledby="cta-heading">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 id="cta-heading" class="text-2xl font-bold text-white sm:text-3xl">
+        Ready for a Brighter Smile?
+      </h2>
+      <p class="mt-4 text-sky-100">
+        Book a whitening consultation and find out which treatment will give you the best results.
+      </p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a
+          href="/book-appointment"
+          class="inline-flex items-center justify-center rounded-lg bg-white px-8 py-3.5 text-base font-semibold text-sky-600 shadow-sm transition-all hover:bg-sky-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-sky-600"
+        >
+          Book Consultation
+        </a>
+        <a
+          href="tel:+15551234567"
+          class="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/30 bg-transparent px-8 py-3.5 text-base font-semibold text-white transition-all hover:border-white hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-sky-600"
+        >
+          <svg aria-hidden="true" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+          </svg>
+          Call (555) 123-4567
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

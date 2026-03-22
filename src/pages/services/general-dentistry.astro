@@ -1,0 +1,150 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="General Dentistry | Franconia Family Dental"
+  description="Comprehensive general dentistry services at Franconia Family Dental including cleanings, exams, fillings, and preventive care for the whole family."
+>
+  <!-- Hero Section -->
+  <section
+    class="bg-gradient-to-b from-sky-50 to-white py-16 md:py-24"
+    aria-labelledby="hero-heading"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <a
+          href="/services"
+          class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 mb-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 rounded"
+        >
+          <svg aria-hidden="true" class="h-4 w-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+          All Services
+        </a>
+        <h1
+          id="hero-heading"
+          class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl"
+        >
+          General Dentistry
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-600">
+          The foundation of a healthy smile starts with regular general dentistry care.
+          Our comprehensive services keep your teeth and gums healthy at every stage of life.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section
+    class="bg-white py-16 md:py-20"
+    aria-labelledby="services-detail-heading"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-start">
+        <div>
+          <h2 id="services-detail-heading" class="text-2xl font-bold text-slate-900 sm:text-3xl">
+            What We Offer
+          </h2>
+          <p class="mt-4 text-slate-600 leading-relaxed">
+            Our general dentistry services are designed to prevent problems before they start
+            and treat issues early when they do arise. We recommend regular checkups every
+            six months to maintain optimal oral health.
+          </p>
+
+          <ul class="mt-8 space-y-4" role="list">
+            {[
+              { title: "Routine Cleanings & Exams", desc: "Professional cleanings remove plaque and tartar buildup while comprehensive exams detect issues early." },
+              { title: "Dental X-Rays", desc: "Digital X-rays provide detailed images of your teeth and jaw with minimal radiation exposure." },
+              { title: "Tooth-Colored Fillings", desc: "We use composite resin fillings that match your natural tooth color for a seamless appearance." },
+              { title: "Oral Cancer Screenings", desc: "Early detection saves lives. We perform oral cancer screenings at every routine visit." },
+              { title: "Gum Disease Treatment", desc: "From gingivitis to periodontitis, we provide effective treatment to restore gum health." },
+              { title: "Tooth Extractions", desc: "When necessary, we perform gentle extractions with your comfort as our top priority." },
+            ].map((item) => (
+              <li class="flex items-start gap-4">
+                <div class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-sky-100">
+                  <svg aria-hidden="true" class="h-4 w-4 text-sky-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <strong class="text-slate-900">{item.title}</strong>
+                  <p class="mt-1 text-sm text-slate-600">{item.desc}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Why It Matters Card -->
+          <div class="rounded-2xl bg-sky-50 p-8">
+            <h3 class="text-lg font-bold text-slate-900">Why Regular Checkups Matter</h3>
+            <p class="mt-3 text-slate-600 leading-relaxed">
+              Most dental problems don't cause pain until they're serious. Regular checkups
+              allow us to catch cavities, gum disease, and other issues early — saving you
+              time, money, and discomfort in the long run.
+            </p>
+          </div>
+
+          <!-- What to Expect Card -->
+          <div class="rounded-2xl bg-slate-50 p-8">
+            <h3 class="text-lg font-bold text-slate-900">What to Expect at Your Visit</h3>
+            <ol class="mt-3 space-y-3 text-slate-600">
+              <li class="flex items-start gap-3">
+                <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-sky-600 text-xs font-bold text-white">1</span>
+                <span>Check-in and review of your medical history</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-sky-600 text-xs font-bold text-white">2</span>
+                <span>Digital X-rays if needed</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-sky-600 text-xs font-bold text-white">3</span>
+                <span>Professional cleaning by our hygienist</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-sky-600 text-xs font-bold text-white">4</span>
+                <span>Comprehensive exam by your dentist</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-sky-600 text-xs font-bold text-white">5</span>
+                <span>Review of findings and treatment plan if needed</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-sky-600 py-16" aria-labelledby="cta-heading">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 id="cta-heading" class="text-2xl font-bold text-white sm:text-3xl">
+        Ready to Schedule Your Cleaning?
+      </h2>
+      <p class="mt-4 text-sky-100">
+        Don't wait until something hurts. Book your routine checkup today and keep your smile healthy.
+      </p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a
+          href="/book-appointment"
+          class="inline-flex items-center justify-center rounded-lg bg-white px-8 py-3.5 text-base font-semibold text-sky-600 shadow-sm transition-all hover:bg-sky-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-sky-600"
+        >
+          Book Appointment
+        </a>
+        <a
+          href="tel:+15551234567"
+          class="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/30 bg-transparent px-8 py-3.5 text-base font-semibold text-white transition-all hover:border-white hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-sky-600"
+        >
+          <svg aria-hidden="true" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+          </svg>
+          Call (555) 123-4567
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

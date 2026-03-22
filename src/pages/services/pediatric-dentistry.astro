@@ -1,0 +1,141 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Pediatric Dentistry | Franconia Family Dental"
+  description="Gentle, child-friendly dental care at Franconia Family Dental. We make dental visits fun and stress-free for kids of all ages in Franconia, NH."
+>
+  <!-- Hero Section -->
+  <section
+    class="bg-gradient-to-b from-sky-50 to-white py-16 md:py-24"
+    aria-labelledby="hero-heading"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <a
+          href="/services"
+          class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 mb-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 rounded"
+        >
+          <svg aria-hidden="true" class="h-4 w-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+          All Services
+        </a>
+        <h1
+          id="hero-heading"
+          class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl"
+        >
+          Pediatric Dentistry
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-600">
+          We believe every child deserves a positive dental experience. Our gentle,
+          kid-friendly approach helps children feel comfortable and builds healthy habits that last a lifetime.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section
+    class="bg-white py-16 md:py-20"
+    aria-labelledby="services-detail-heading"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-start">
+        <div>
+          <h2 id="services-detail-heading" class="text-2xl font-bold text-slate-900 sm:text-3xl">
+            Care for Kids of All Ages
+          </h2>
+          <p class="mt-4 text-slate-600 leading-relaxed">
+            From your child's first tooth to their teenage years, we provide comprehensive
+            dental care in a welcoming, fun environment. We take extra time to explain
+            procedures in kid-friendly terms and celebrate every milestone.
+          </p>
+
+          <ul class="mt-8 space-y-4" role="list">
+            {[
+              { title: "First Dental Visits", desc: "We recommend bringing your child in by their first birthday or when their first tooth appears." },
+              { title: "Preventive Cleanings", desc: "Regular cleanings and fluoride treatments to keep little teeth healthy and cavity-free." },
+              { title: "Dental Sealants", desc: "Protective coatings applied to back teeth to prevent cavities in hard-to-clean areas." },
+              { title: "Cavity Treatment", desc: "Gentle, child-friendly treatment for cavities using tooth-colored fillings." },
+              { title: "Orthodontic Evaluations", desc: "Early assessment to identify bite issues and crowding before they become bigger problems." },
+              { title: "Sports Mouthguards", desc: "Custom-fitted mouthguards to protect your child's teeth during sports and activities." },
+            ].map((item) => (
+              <li class="flex items-start gap-4">
+                <div class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-sky-100">
+                  <svg aria-hidden="true" class="h-4 w-4 text-sky-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <strong class="text-slate-900">{item.title}</strong>
+                  <p class="mt-1 text-sm text-slate-600">{item.desc}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="space-y-6">
+          <div class="rounded-2xl bg-sky-50 p-8">
+            <h3 class="text-lg font-bold text-slate-900">Our Approach to Kids</h3>
+            <p class="mt-3 text-slate-600 leading-relaxed">
+              We use the "tell-show-do" method — explaining what we're going to do,
+              showing them the tools, then gently proceeding. This approach reduces
+              anxiety and builds trust with even the most nervous little patients.
+            </p>
+          </div>
+
+          <div class="rounded-2xl bg-slate-50 p-8">
+            <h3 class="text-lg font-bold text-slate-900">Tips for Parents</h3>
+            <ul class="mt-3 space-y-3 text-slate-600">
+              {[
+                "Schedule morning appointments when kids are most cooperative",
+                "Avoid using dental visits as a threat or punishment",
+                "Read books about dental visits to prepare your child",
+                "Praise your child's bravery before and after visits",
+              ].map((tip) => (
+                <li class="flex items-start gap-3">
+                  <svg aria-hidden="true" class="h-5 w-5 text-sky-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>{tip}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-sky-600 py-16" aria-labelledby="cta-heading">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 id="cta-heading" class="text-2xl font-bold text-white sm:text-3xl">
+        Book Your Child's First Visit
+      </h2>
+      <p class="mt-4 text-sky-100">
+        Give your child the gift of a healthy smile. We make dental visits something kids actually look forward to.
+      </p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a
+          href="/book-appointment"
+          class="inline-flex items-center justify-center rounded-lg bg-white px-8 py-3.5 text-base font-semibold text-sky-600 shadow-sm transition-all hover:bg-sky-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-sky-600"
+        >
+          Book Appointment
+        </a>
+        <a
+          href="tel:+15551234567"
+          class="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/30 bg-transparent px-8 py-3.5 text-base font-semibold text-white transition-all hover:border-white hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-sky-600"
+        >
+          <svg aria-hidden="true" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+          </svg>
+          Call (555) 123-4567
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -6,18 +6,24 @@ const teamMembers = [
     id: "dr-chen",
     name: "Dr. Sarah Chen, DDS",
     title: "Lead Dentist & Founder",
+    initials: "SC",
+    color: "bg-sky-600",
     bio: "With over 15 years of experience in family and cosmetic dentistry, Dr. Chen founded Franconia Family Dental to provide compassionate, patient-centered care. She earned her Doctor of Dental Surgery from Virginia Commonwealth University and is passionate about creating comfortable experiences for patients of all ages.",
   },
   {
     id: "dr-martinez",
     name: "Dr. Michael Martinez, DMD",
     title: "Associate Dentist",
+    initials: "MM",
+    color: "bg-slate-700",
     bio: "Dr. Martinez specializes in pediatric dentistry and preventive care. A graduate of the University of Maryland School of Dentistry, he brings a gentle approach that helps even the most anxious patients feel at ease. He's dedicated to educating families about oral health.",
   },
   {
     id: "lisa-thompson",
     name: "Lisa Thompson, RDH",
     title: "Lead Dental Hygienist",
+    initials: "LT",
+    color: "bg-sky-500",
     bio: "Lisa has been part of our team for over 8 years, providing thorough yet gentle cleanings and personalized hygiene education. Her warm demeanor and attention to detail make every visit comfortable, and she's committed to helping patients achieve their best smile.",
   },
 ];
@@ -113,19 +119,14 @@ const values = [
                 aria-labelledby={`${member.id}-name`}
               >
                 <div class="flex flex-col items-center text-center">
+                  <!-- Initial Badge -->
                   <div
-                    class="flex h-24 w-24 items-center justify-center rounded-full bg-sky-100"
-                    role="img"
-                    aria-label={`Portrait of ${member.name}`}
+                    class={`flex h-24 w-24 items-center justify-center rounded-full ${member.color}`}
+                    aria-hidden="true"
                   >
-                    <svg
-                      class="h-12 w-12 text-sky-600"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                    </svg>
+                    <span class="text-2xl font-bold text-white tracking-wide">
+                      {member.initials}
+                    </span>
                   </div>
 
                   <h3
@@ -275,7 +276,6 @@ const values = [
               height="600"
             />
           </div>
-          <!-- Decorative element -->
           <div
             class="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-2xl bg-sky-100"
             aria-hidden="true"
