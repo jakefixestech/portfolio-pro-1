@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Accessibility | Franconia Family Dental"
+  description="Franconia Family Dental is committed to digital and physical accessibility for all patients. Learn about our WCAG AA compliance and accommodations."
+>
+  <section class="py-20 md:py-28 bg-white" aria-labelledby="hero-heading">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-4 mb-4">
+        <div class="w-12 h-1 bg-sky-600" aria-hidden="true"></div>
+        <h1 id="hero-heading" class="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">
+          Accessibility
+        </h1>
+      </div>
+      <p class="text-slate-500 mb-12">Our commitment to an inclusive experience for every patient.</p>
+
+      <div class="space-y-10 text-slate-700 leading-relaxed">
+
+        <section aria-labelledby="commitment-heading">
+          <h2 id="commitment-heading" class="text-2xl font-bold text-slate-900 mb-4">Our Commitment</h2>
+          <p>Franconia Family Dental is committed to ensuring digital accessibility for people with disabilities. We continually improve the user experience for everyone and apply relevant accessibility standards to ensure we meet that commitment.</p>
+          <div class="mt-6 inline-flex items-center gap-3 bg-sky-50 border border-sky-200 rounded-lg px-6 py-4">
+            <span class="text-3xl font-bold text-sky-600">10/10</span>
+            <div>
+              <p class="font-semibold text-slate-900">WAVE Accessibility Score</p>
+              <p class="text-sm text-slate-500">Verified across all pages</p>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="standards-heading">
+          <h2 id="standards-heading" class="text-2xl font-bold text-slate-900 mb-4">Conformance Standards</h2>
+          <p>This website conforms to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA. These guidelines explain how to make web content more accessible to people with disabilities. Compliance with these guidelines helps make the web more user-friendly for all people.</p>
+        </section>
+
+        <section aria-labelledby="features-heading">
+          <h2 id="features-heading" class="text-2xl font-bold text-slate-900 mb-4">Accessibility Features</h2>
+          <ul class="list-disc list-inside space-y-2 mt-4 text-slate-600">
+            <li>Skip to main content link for keyboard navigation</li>
+            <li>Proper heading hierarchy throughout all pages</li>
+            <li>All images include descriptive alternative text</li>
+            <li>All form inputs have associated labels</li>
+            <li>Sufficient color contrast ratios on all text</li>
+            <li>All interactive elements are keyboard accessible</li>
+            <li>ARIA landmarks and labels on all page regions</li>
+            <li>Reduced motion support for users who prefer it</li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="physical-heading">
+          <h2 id="physical-heading" class="text-2xl font-bold text-slate-900 mb-4">Physical Accessibility</h2>
+          <p>Our office is designed to be accessible to all patients:</p>
+          <ul class="list-disc list-inside space-y-2 mt-4 text-slate-600">
+            <li>Accessible entrance and parking spaces</li>
+            <li>Wheelchair accessible treatment rooms</li>
+            <li>Accessible restroom facilities</li>
+            <li>Staff trained to assist patients with disabilities</li>
+            <li>Translation services available upon request</li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="feedback-heading">
+          <h2 id="feedback-heading" class="text-2xl font-bold text-slate-900 mb-4">Feedback & Contact</h2>
+          <p>We welcome feedback on the accessibility of our website and office. If you experience any barriers or need accommodations, please contact us:</p>
+          <address class="not-italic mt-4 text-slate-600">
+            Franconia Family Dental<br />
+            123 Main Street<br />
+            Franconia, NH 03580<br />
+            <a href="tel:+15551234567" class="text-sky-600 hover:underline">(555) 123-4567</a><br />
+            <a href="mailto:info@franconiafamilydental.com" class="text-sky-600 hover:underline">info@franconiafamilydental.com</a>
+          </address>
+          <p class="mt-4">We aim to respond to accessibility feedback within 2 business days.</p>
+        </section>
+
+      </div>
+    </div>
+  </section>
+</Layout>
