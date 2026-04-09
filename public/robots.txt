@@ -1,0 +1,3 @@
+User-agent: * 
+Allow: / 
+Sitemap: https://pro1.jakefixestech.com/sitemap.xml
