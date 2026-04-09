@@ -183,42 +183,38 @@ import Layout from "../layouts/Layout.astro";
     resultsCount.classList.add("hidden");
     resultsContainer.innerHTML = `<p class="searching">Searching...</p>`;
 
-    // @ts-ignore
-    const pagefind = await import(/* @vite-ignore */ "/pagefind/pagefind.js");
+    try {
+      // @ts-ignore
+      const pagefind = await import(/* @vite-ignore */ "/pagefind/pagefind.js");
+      const search = await pagefind.search(term);
 
-    const search = await pagefind.search(term);
+      if (search.results.length === 0) {
+        resultsContainer.innerHTML = `<p class="no-results">No results found for <strong>"${term}"</strong>.</p>`;
+        return;
+      }
 
-    if (search.results.length === 0) {
-      resultsContainer.innerHTML = `
-        <div class="no-results">
-          <svg class="mx-auto mb-4 h-12 w-12 text-slate-300" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 15.803 7.5 7.5 0 0016.803 15.803z" />
-          </svg>
-          <p class="text-lg font-semibold text-slate-700 mb-1">No results found</p>
-          <p class="text-sm">No pages matched <strong>"${term}"</strong>. Try a different search term.</p>
-        </div>`;
-      return;
+      const results = await Promise.all(
+        search.results.slice(0, 10).map((r: any) => r.data())
+      );
+
+      resultsCount.textContent = `${search.results.length} result${search.results.length === 1 ? "" : "s"} for "${term}"`;
+      resultsCount.classList.remove("hidden");
+
+      resultsContainer.innerHTML = results
+        .map(
+          (result: any) => `
+          <a href="${result.url}" class="search-result">
+            <p class="search-result-url">${formatUrl(result.url)}</p>
+            <h2 class="search-result-title">${result.meta?.title || "Page"}</h2>
+            <div class="search-result-divider"></div>
+            <p class="search-result-excerpt">${result.excerpt}</p>
+          </a>
+        `
+        )
+        .join("");
+    } catch (err) {
+      resultsContainer.innerHTML = `<p class="no-results">Search error: <strong>${err}</strong></p>`;
     }
-
-    const results = await Promise.all(
-      search.results.slice(0, 10).map((r: any) => r.data())
-    );
-
-    resultsCount.textContent = `${search.results.length} result${search.results.length === 1 ? "" : "s"} for "${term}"`;
-    resultsCount.classList.remove("hidden");
-
-    resultsContainer.innerHTML = results
-      .map(
-        (result: any) => `
-        <a href="${result.url}" class="search-result">
-          <p class="search-result-url">${formatUrl(result.url)}</p>
-          <h2 class="search-result-title">${result.meta?.title || "Page"}</h2>
-          <div class="search-result-divider"></div>
-          <p class="search-result-excerpt">${result.excerpt}</p>
-        </a>
-      `
-      )
-      .join("");
   }
 
   if (query) {
