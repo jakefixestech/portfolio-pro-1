@@ -1,0 +1,264 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Search | Franconia Family Dental"
+  description="Search the Franconia Family Dental website for information about our services, patient info, and more."
+>
+  <section class="bg-gradient-to-b from-sky-50 to-white min-h-screen py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center mb-10">
+        <h1 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+          Search Our Site
+        </h1>
+        <p class="mt-3 text-lg text-slate-600">
+          Find information about our services, patient resources, and more.
+        </p>
+      </div>
+
+      <!-- Search input -->
+      <form role="search" class="relative mb-10">
+        <label for="search-input" class="sr-only">Search site</label>
+        <div class="relative">
+          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+            <svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 15.803 7.5 7.5 0 0016.803 15.803z" />
+            </svg>
+          </div>
+          <input
+            type="search"
+            id="search-input"
+            name="q"
+            placeholder="Search for services, patient info..."
+            autocomplete="off"
+            class="w-full rounded-xl border border-slate-200 bg-white py-4 pl-12 pr-4 text-base text-slate-800 placeholder-slate-500 shadow-sm focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-500"
+          />
+        </div>
+      </form>
+
+      <!-- Results count -->
+      <p id="results-count" class="hidden text-sm font-medium text-slate-600 mb-6"></p>
+
+      <!-- Results container -->
+      <div id="search-results" class="space-y-4" aria-live="polite" aria-label="Search results">
+        <p id="search-prompt" class="text-center text-slate-600 py-8">
+          Enter a search term above to find what you're looking for.
+        </p>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<style is:global>
+  /* Result card */
+  .search-result {
+    display: block;
+    border-radius: 0.875rem;
+    border: 1px solid #e2e8f0;
+    background: white;
+    padding: 1.5rem;
+    text-decoration: none;
+    transition: box-shadow 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .search-result:hover {
+    box-shadow: 0 6px 20px rgba(14,165,233,0.12);
+    border-color: #7dd3fc;
+    transform: translateY(-1px);
+  }
+  .search-result:focus-visible {
+    outline: 2px solid #0369a1;
+    outline-offset: 2px;
+  }
+
+  /* URL breadcrumb */
+  .search-result-url {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #0369a1;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+  .search-result-url::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: #0369a1;
+    flex-shrink: 0;
+  }
+
+  /* Title — h2 so no possible heading alerts */
+  .search-result-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 0;
+    margin-bottom: 0.625rem;
+    line-height: 1.4;
+  }
+
+  /* Divider */
+  .search-result-divider {
+    height: 1px;
+    background: #f1f5f9;
+    margin-bottom: 0.625rem;
+  }
+
+  /* Excerpt */
+  .search-result-excerpt {
+    font-size: 0.9rem;
+    color: #334155;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* Sky blue highlights */
+  .search-result-excerpt mark {
+    background: #e0f2fe;
+    color: #0369a1;
+    border-radius: 3px;
+    padding: 1px 3px;
+    font-weight: 600;
+  }
+
+  /* No results state */
+  .no-results {
+    text-align: center;
+    color: #475569;
+    padding: 3rem 0;
+  }
+  .no-results strong {
+    color: #0f172a;
+  }
+
+  /* Loading spinner */
+  .searching {
+    text-align: center;
+    color: #475569;
+    padding: 3rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .searching::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: 2px solid #e0f2fe;
+    border-top-color: #0369a1;
+    border-radius: 9999px;
+    animation: spin 0.6s linear infinite;
+    flex-shrink: 0;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .search-result { transition: none; }
+    .searching::before { animation: none; }
+  }
+</style>
+
+<script>
+  const input = document.getElementById("search-input") as HTMLInputElement;
+  const resultsContainer = document.getElementById("search-results") as HTMLElement;
+  const searchPrompt = document.getElementById("search-prompt") as HTMLElement;
+  const resultsCount = document.getElementById("results-count") as HTMLElement;
+
+  // Pre-fill from URL ?q= param
+  const params = new URLSearchParams(window.location.search);
+  const query = params.get("q") || "";
+  if (query) {
+    input.value = query;
+  }
+
+  function formatUrl(url: string): string {
+    return url.replace(/^\/|\/$/g, "").replace(/\//g, " › ") || "Home";
+  }
+
+  async function runSearch(term: string) {
+    if (!term.trim()) {
+      resultsContainer.innerHTML = "";
+      resultsContainer.appendChild(searchPrompt);
+      searchPrompt.style.display = "block";
+      resultsCount.classList.add("hidden");
+      return;
+    }
+
+    searchPrompt.style.display = "none";
+    resultsCount.classList.add("hidden");
+    resultsContainer.innerHTML = `<p class="searching">Searching...</p>`;
+
+    // @ts-ignore
+    const pagefind = await import(/* @vite-ignore */ "/pagefind/pagefind.js");
+    await pagefind.init();
+
+    const search = await pagefind.search(term);
+
+    if (search.results.length === 0) {
+      resultsContainer.innerHTML = `
+        <div class="no-results">
+          <svg class="mx-auto mb-4 h-12 w-12 text-slate-300" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 15.803 7.5 7.5 0 0016.803 15.803z" />
+          </svg>
+          <p class="text-lg font-semibold text-slate-700 mb-1">No results found</p>
+          <p class="text-sm">No pages matched <strong>"${term}"</strong>. Try a different search term.</p>
+        </div>`;
+      return;
+    }
+
+    // Load up to 10 results
+    const results = await Promise.all(
+      search.results.slice(0, 10).map((r: any) => r.data())
+    );
+
+    // Show count
+    resultsCount.textContent = `${search.results.length} result${search.results.length === 1 ? "" : "s"} for "${term}"`;
+    resultsCount.classList.remove("hidden");
+
+    resultsContainer.innerHTML = results
+      .map(
+        (result: any) => `
+        <a href="${result.url}" class="search-result">
+          <p class="search-result-url">${formatUrl(result.url)}</p>
+          <h2 class="search-result-title">${result.meta?.title || "Page"}</h2>
+          <div class="search-result-divider"></div>
+          <p class="search-result-excerpt">${result.excerpt}</p>
+        </a>
+      `
+      )
+      .join("");
+  }
+
+  // Run on load if query param present
+  if (query) {
+    runSearch(query);
+  }
+
+  // Debounced live search as user types
+  let debounceTimer: ReturnType<typeof setTimeout>;
+  input?.addEventListener("input", () => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      const url = new URL(window.location.href);
+      if (input.value.trim()) {
+        url.searchParams.set("q", input.value.trim());
+      } else {
+        url.searchParams.delete("q");
+      }
+      window.history.replaceState({}, "", url.toString());
+      runSearch(input.value.trim());
+    }, 300);
+  });
+</script>

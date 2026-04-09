@@ -1,6 +1,5 @@
 ---
 const navLinks = [
-  { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
   { href: "/patient-info", label: "Patient Info" },
@@ -14,9 +13,10 @@ const navLinks = [
     aria-label="Main navigation"
   >
     <div class="flex h-16 items-center justify-between lg:h-20">
+
       <!-- Logo / Text Mark -->
-      <a
-        href="/"
+      
+      <a  href="/"
         class="flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 rounded-md"
         aria-label="Franconia Family Dental - Home"
       >
@@ -41,13 +41,13 @@ const navLinks = [
       </a>
 
       <!-- Desktop Navigation -->
-      <div class="hidden lg:flex lg:items-center lg:gap-8">
+      <div class="hidden lg:flex lg:items-center lg:gap-6">
         <ul class="flex items-center gap-1" role="list">
           {
             navLinks.map((link) => (
               <li>
-                <a
-                  href={link.href}
+                
+                <a  href={link.href}
                   class="px-3 py-2 text-sm font-medium text-slate-600 rounded-md transition-colors hover:text-sky-600 hover:bg-sky-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
                 >
                   {link.label}
@@ -57,50 +57,93 @@ const navLinks = [
           }
         </ul>
 
-        <a
-          href="/book-appointment"
+        <!-- Desktop Search Bar -->
+        <form
+          action="/search"
+          method="GET"
+          role="search"
+          class="relative"
+        >
+          <label for="desktop-search" class="sr-only">Search site</label>
+          <div class="relative">
+            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+              <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 15.803 7.5 7.5 0 0016.803 15.803z" />
+              </svg>
+            </div>
+            <input
+              type="search"
+              id="desktop-search"
+              name="q"
+              placeholder="Search..."
+              class="w-48 rounded-lg border border-slate-200 bg-slate-50 py-2 pl-9 pr-4 text-sm text-slate-800 placeholder-slate-400 transition-all hover:border-sky-300 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-1 focus:w-64"
+            />
+          </div>
+        </form>
+
+        
+        <a  href="/book-appointment"
           class="inline-flex items-center justify-center rounded-lg bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 active:scale-[0.98]"
         >
           Book Appointment
         </a>
       </div>
 
-      <!-- Mobile Menu Button -->
-      <button
-        type="button"
-        id="mobile-menu-button"
-        class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 lg:hidden hover:bg-slate-100 hover:text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-        aria-label="Open main menu"
-      >
-        <svg
-          class="h-6 w-6 menu-icon"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          aria-hidden="true"
+      <!-- Mobile: Search icon + Menu Button -->
+      <div class="flex items-center gap-2 lg:hidden">
+        <button
+          type="button"
+          id="mobile-search-toggle"
+          class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 hover:bg-slate-100 hover:text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
+          aria-expanded="false"
+          aria-controls="mobile-search-bar"
+          aria-label="Open search"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
-        </svg>
-        <svg
-          class="hidden h-6 w-6 close-icon"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          aria-hidden="true"
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 15.803 7.5 7.5 0 0016.803 15.803z" />
+          </svg>
+        </button>
+
+        <button
+          type="button"
+          id="mobile-menu-button"
+          class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 hover:bg-slate-100 hover:text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Open main menu"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
+          <svg class="h-6 w-6 menu-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+          </svg>
+          <svg class="hidden h-6 w-6 close-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Search Bar (toggleable) -->
+    <div
+      id="mobile-search-bar"
+      class="hidden border-t border-slate-100 py-3 lg:hidden"
+    >
+      <form action="/search" method="GET" role="search">
+        <label for="mobile-search" class="sr-only">Search site</label>
+        <div class="relative">
+          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+            <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 15.803 7.5 7.5 0 0016.803 15.803z" />
+            </svg>
+          </div>
+          <input
+            type="search"
+            id="mobile-search"
+            name="q"
+            placeholder="Search..."
+            class="w-full rounded-lg border border-slate-200 bg-slate-50 py-2.5 pl-9 pr-4 text-sm text-slate-800 placeholder-slate-400 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-500"
+          />
+        </div>
+      </form>
     </div>
 
     <!-- Mobile Menu Panel -->
@@ -115,8 +158,8 @@ const navLinks = [
           {
             navLinks.map((link) => (
               <li>
-                <a
-                  href={link.href}
+                
+                <a  href={link.href}
                   class="block rounded-md px-3 py-2 text-base font-medium text-slate-600 transition-colors hover:bg-sky-50 hover:text-sky-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-sky-500"
                 >
                   {link.label}
@@ -126,8 +169,8 @@ const navLinks = [
           }
         </ul>
         <div class="px-3 pt-4">
-          <a
-            href="/book-appointment"
+          
+          <a  href="/book-appointment"
             class="block w-full rounded-lg bg-sky-600 px-4 py-3 text-center text-base font-semibold text-white shadow-sm transition-all hover:bg-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
           >
             Book Appointment
@@ -135,35 +178,53 @@ const navLinks = [
         </div>
       </div>
     </div>
+
   </nav>
 </header>
 
 <script>
+  // Mobile menu toggle
   const mobileMenuButton = document.getElementById("mobile-menu-button");
   const mobileMenu = document.getElementById("mobile-menu");
   const menuIcon = mobileMenuButton?.querySelector(".menu-icon");
   const closeIcon = mobileMenuButton?.querySelector(".close-icon");
 
   mobileMenuButton?.addEventListener("click", () => {
-    const isExpanded =
-      mobileMenuButton.getAttribute("aria-expanded") === "true";
-
+    const isExpanded = mobileMenuButton.getAttribute("aria-expanded") === "true";
     mobileMenuButton.setAttribute("aria-expanded", String(!isExpanded));
-    mobileMenuButton.setAttribute(
-      "aria-label",
-      isExpanded ? "Open main menu" : "Close main menu"
-    );
-
+    mobileMenuButton.setAttribute("aria-label", isExpanded ? "Open main menu" : "Close main menu");
     mobileMenu?.classList.toggle("hidden");
     menuIcon?.classList.toggle("hidden");
     closeIcon?.classList.toggle("hidden");
   });
 
+  // Mobile search toggle
+  const mobileSearchToggle = document.getElementById("mobile-search-toggle");
+  const mobileSearchBar = document.getElementById("mobile-search-bar");
+  const mobileSearchInput = document.getElementById("mobile-search") as HTMLInputElement;
+
+  mobileSearchToggle?.addEventListener("click", () => {
+    const isExpanded = mobileSearchToggle.getAttribute("aria-expanded") === "true";
+    mobileSearchToggle.setAttribute("aria-expanded", String(!isExpanded));
+    mobileSearchToggle.setAttribute("aria-label", isExpanded ? "Open search" : "Close search");
+    mobileSearchBar?.classList.toggle("hidden");
+    if (!isExpanded) {
+      // Focus the input when opening
+      setTimeout(() => mobileSearchInput?.focus(), 50);
+    }
+  });
+
   // Close menu on escape key
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !mobileMenu?.classList.contains("hidden")) {
-      mobileMenuButton?.click();
-      mobileMenuButton?.focus();
+    if (e.key === "Escape") {
+      if (!mobileMenu?.classList.contains("hidden")) {
+        mobileMenuButton?.click();
+        mobileMenuButton?.focus();
+      }
+      if (!mobileSearchBar?.classList.contains("hidden")) {
+        mobileSearchToggle?.click();
+        mobileSearchToggle?.focus();
+      }
     }
   });
 
@@ -176,6 +237,13 @@ const navLinks = [
       !mobileMenuButton?.contains(target)
     ) {
       mobileMenuButton?.click();
+    }
+    if (
+      !mobileSearchBar?.classList.contains("hidden") &&
+      !mobileSearchBar?.contains(target) &&
+      !mobileSearchToggle?.contains(target)
+    ) {
+      mobileSearchToggle?.click();
     }
   });
 </script>
