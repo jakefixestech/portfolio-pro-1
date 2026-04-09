@@ -53,7 +53,6 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <style is:global>
-  /* Result card */
   .search-result {
     display: block;
     border-radius: 0.875rem;
@@ -73,8 +72,6 @@ import Layout from "../layouts/Layout.astro";
     outline: 2px solid #0369a1;
     outline-offset: 2px;
   }
-
-  /* URL breadcrumb */
   .search-result-url {
     display: inline-flex;
     align-items: center;
@@ -95,8 +92,6 @@ import Layout from "../layouts/Layout.astro";
     background: #0369a1;
     flex-shrink: 0;
   }
-
-  /* Title — h2 so no possible heading alerts */
   .search-result-title {
     font-size: 1.125rem;
     font-weight: 700;
@@ -105,23 +100,17 @@ import Layout from "../layouts/Layout.astro";
     margin-bottom: 0.625rem;
     line-height: 1.4;
   }
-
-  /* Divider */
   .search-result-divider {
     height: 1px;
     background: #f1f5f9;
     margin-bottom: 0.625rem;
   }
-
-  /* Excerpt */
   .search-result-excerpt {
     font-size: 0.9rem;
     color: #334155;
     line-height: 1.7;
     margin: 0;
   }
-
-  /* Sky blue highlights */
   .search-result-excerpt mark {
     background: #e0f2fe;
     color: #0369a1;
@@ -129,8 +118,6 @@ import Layout from "../layouts/Layout.astro";
     padding: 1px 3px;
     font-weight: 600;
   }
-
-  /* No results state */
   .no-results {
     text-align: center;
     color: #475569;
@@ -139,8 +126,6 @@ import Layout from "../layouts/Layout.astro";
   .no-results strong {
     color: #0f172a;
   }
-
-  /* Loading spinner */
   .searching {
     text-align: center;
     color: #475569;
@@ -163,7 +148,6 @@ import Layout from "../layouts/Layout.astro";
   @keyframes spin {
     to { transform: rotate(360deg); }
   }
-
   @media (prefers-reduced-motion: reduce) {
     .search-result { transition: none; }
     .searching::before { animation: none; }
@@ -176,7 +160,6 @@ import Layout from "../layouts/Layout.astro";
   const searchPrompt = document.getElementById("search-prompt") as HTMLElement;
   const resultsCount = document.getElementById("results-count") as HTMLElement;
 
-  // Pre-fill from URL ?q= param
   const params = new URLSearchParams(window.location.search);
   const query = params.get("q") || "";
   if (query) {
@@ -202,7 +185,6 @@ import Layout from "../layouts/Layout.astro";
 
     // @ts-ignore
     const pagefind = await import(/* @vite-ignore */ "/pagefind/pagefind.js");
-    await pagefind.init();
 
     const search = await pagefind.search(term);
 
@@ -218,12 +200,10 @@ import Layout from "../layouts/Layout.astro";
       return;
     }
 
-    // Load up to 10 results
     const results = await Promise.all(
       search.results.slice(0, 10).map((r: any) => r.data())
     );
 
-    // Show count
     resultsCount.textContent = `${search.results.length} result${search.results.length === 1 ? "" : "s"} for "${term}"`;
     resultsCount.classList.remove("hidden");
 
@@ -241,12 +221,10 @@ import Layout from "../layouts/Layout.astro";
       .join("");
   }
 
-  // Run on load if query param present
   if (query) {
     runSearch(query);
   }
 
-  // Debounced live search as user types
   let debounceTimer: ReturnType<typeof setTimeout>;
   input?.addEventListener("input", () => {
     clearTimeout(debounceTimer);
