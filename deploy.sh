@@ -1,9 +1,6 @@
 #!/bin/bash
 echo "Building site..."
-npx astro build
-
-echo "Indexing search with Pagefind..."
-npx pagefind --site dist
+npm run build
 
 echo "Pushing to GitHub..."
 git add .
