@@ -23,17 +23,13 @@ import Layout from "../layouts/Layout.astro";
             care in a warm, welcoming environment. From routine checkups to
             advanced treatments, we're here for every member of your family.
           </p>
-          <div
-            class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start"
-          >
-            
-            <a  href="/book-appointment"
+          <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
+            <a href="/book-appointment"
               class="inline-flex w-full items-center justify-center rounded-lg bg-sky-700 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-sky-500/25 transition-all hover:bg-sky-800 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 active:scale-[0.98] sm:w-auto"
             >
               Book Your Appointment
             </a>
-            
-            <a  href="/services"
+            <a href="/services"
               class="inline-flex w-full items-center justify-center rounded-lg border-2 border-slate-200 bg-white px-8 py-4 text-base font-semibold text-slate-700 transition-all hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 sm:w-auto"
             >
               Explore Services
@@ -53,7 +49,6 @@ import Layout from "../layouts/Layout.astro";
               height="600"
             />
           </div>
-          <!-- Decorative accent -->
           <div
             class="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-2xl bg-sky-100"
             aria-hidden="true"
@@ -126,7 +121,91 @@ import Layout from "../layouts/Layout.astro";
   </section>
 
   <!-- CTA Section -->
-  <section class="bg-sky-700 py-16" aria-labelledby="cta-heading">
+  <section class="bg-sky-700 py-16 relative overflow-hidden" aria-labelledby="cta-heading">
+
+    <!-- Dancing tooth -->
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <style>
+        @keyframes toothWalk {
+          0%   { transform: translateX(-80px) translateY(0px) rotate(-5deg); opacity: 0; }
+          3%   { opacity: 1; }
+          20%  { transform: translateX(15vw)  translateY(-18px) rotate(8deg); }
+          35%  { transform: translateX(28vw)  translateY(0px)   rotate(-6deg); }
+          50%  { transform: translateX(42vw)  translateY(-20px) rotate(10deg); }
+          65%  { transform: translateX(58vw)  translateY(0px)   rotate(-8deg); }
+          80%  { transform: translateX(72vw)  translateY(-16px) rotate(6deg); }
+          93%  { transform: translateX(88vw)  translateY(0px)   rotate(-4deg); opacity: 1; }
+          97%  { opacity: 0; }
+          100% { transform: translateX(105vw) translateY(0px)   rotate(5deg);  opacity: 0; }
+        }
+        @keyframes toothBob {
+          0%, 100% { transform: scaleY(1); }
+          50%       { transform: scaleY(0.92); }
+        }
+        .dancing-tooth {
+          position: absolute;
+          bottom: 12px;
+          left: 0;
+          width: 48px;
+          height: 48px;
+          animation: toothWalk 9s ease-in-out infinite;
+        }
+        .dancing-tooth svg {
+          animation: toothBob 0.45s ease-in-out infinite alternate;
+          transform-origin: bottom center;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .dancing-tooth { animation: none; opacity: 0; }
+          .dancing-tooth svg { animation: none; }
+        }
+      </style>
+
+      <div class="dancing-tooth">
+        <svg viewBox="0 0 48 60" width="48" height="60" xmlns="http://www.w3.org/2000/svg">
+          <!-- Tooth body -->
+          <path
+            d="M24 4 C14 4 8 10 8 18 C8 22 9 25 10 28 C11 32 11 38 12 42 C13 47 15 52 17 52 C19 52 20 48 21 44 C22 40 22 38 24 38 C26 38 26 40 27 44 C28 48 29 52 31 52 C33 52 35 47 36 42 C37 38 37 32 38 28 C39 25 40 22 40 18 C40 10 34 4 24 4Z"
+            fill="white"
+            stroke="#bae6fd"
+            stroke-width="1.5"
+          />
+          <!-- Shine left -->
+          <path
+            d="M14 12 C14 10 16 8 18 9"
+            fill="none"
+            stroke="#e0f2fe"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <!-- Shine small -->
+          <circle cx="19" cy="15" r="1.5" fill="#e0f2fe" />
+          <!-- Cute smile -->
+          <path
+            d="M19 26 Q24 30 29 26"
+            fill="none"
+            stroke="#93c5fd"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+          <!-- Eyes -->
+          <circle cx="20" cy="21" r="1.8" fill="#7dd3fc" />
+          <circle cx="28" cy="21" r="1.8" fill="#7dd3fc" />
+          <!-- Eye shine -->
+          <circle cx="20.8" cy="20.2" r="0.6" fill="white" />
+          <circle cx="28.8" cy="20.2" r="0.6" fill="white" />
+          <!-- Rosy cheeks -->
+          <circle cx="16" cy="24" r="2.5" fill="#fda4af" opacity="0.5" />
+          <circle cx="32" cy="24" r="2.5" fill="#fda4af" opacity="0.5" />
+          <!-- Little arms waving -->
+          <path d="M8 22 Q3 18 5 14" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" />
+          <path d="M40 22 Q45 18 43 14" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" />
+          <!-- Little legs -->
+          <path d="M20 52 Q18 56 16 58" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" />
+          <path d="M28 52 Q30 56 32 58" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </div>
+    </div>
+
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col items-center justify-between gap-6 lg:flex-row">
         <div class="text-center lg:text-left">
@@ -138,8 +217,7 @@ import Layout from "../layouts/Layout.astro";
           </p>
         </div>
         <div class="flex flex-col items-center gap-4 sm:flex-row">
-          
-          <a  href="tel:+15551234567"
+          <a href="tel:+15551234567"
             class="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold text-sky-700 shadow-lg transition-all hover:bg-sky-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-sky-700"
           >
             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -147,8 +225,7 @@ import Layout from "../layouts/Layout.astro";
             </svg>
             (555) 123-4567
           </a>
-          
-          <a  href="/book-appointment"
+          <a href="/book-appointment"
             class="inline-flex items-center rounded-lg border-2 border-white bg-transparent px-6 py-3 font-semibold text-white transition-all hover:bg-white hover:text-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-sky-700"
           >
             Book Online
