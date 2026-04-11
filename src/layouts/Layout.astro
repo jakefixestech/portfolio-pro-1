@@ -62,28 +62,23 @@ const ogImageUrl = ogImage.startsWith("http") ? ogImage : new URL(ogImage, siteU
     <meta name="theme-color" content="#0284c7" />
     <meta name="msapplication-TileColor" content="#0284c7" />
 
-    <!-- Fonts -->
+    <!-- Fonts — non-blocking to avoid render delay -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
-    <!-- Google Analytics Placeholder -->
-    <!--
-      Replace GA_MEASUREMENT_ID with your actual Google Analytics 4 measurement ID.
-      Uncomment when ready to enable tracking.
-    -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'GA_MEASUREMENT_ID');
-    </script>
-    -->
+   
 
     <!-- Structured Data / JSON-LD -->
     <script type="application/ld+json">
@@ -123,8 +118,8 @@ const ogImageUrl = ogImage.startsWith("http") ? ogImage : new URL(ogImage, siteU
   </head>
   <body class="flex min-h-screen flex-col bg-white font-sans text-slate-800 antialiased">
     <!-- Skip to main content -->
-    <a
-      href="#main-content"
+    
+    <a  href="#main-content"
       class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-sky-600 focus:px-4 focus:py-2 focus:text-white focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2"
     >
       Skip to main content
