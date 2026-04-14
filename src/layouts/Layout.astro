@@ -11,7 +11,7 @@ interface Props {
 const {
   title = "Franconia Family Dental | Compassionate Family Dentistry",
   description = "Franconia Family Dental provides comprehensive dental care for the whole family. Schedule your appointment today for a healthier smile.",
-  ogImage = "/images/hero.jpg",
+  ogImage = "/hero.jpg",
 } = Astro.props;
 
 const siteUrl = "https://pro1.jakefixestech.com";
@@ -112,7 +112,7 @@ const ogImageUrl = ogImage.startsWith("http") ? ogImage : new URL(ogImage, siteU
           }
         ],
         "priceRange": "$$",
-        "image": "https://pro1.jakefixestech.com/images/hero.jpg"
+        "image": "https://pro1.jakefixestech.com/hero.jpg"
       }
     </script>
   </head>
